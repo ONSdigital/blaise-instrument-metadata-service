@@ -21,5 +21,8 @@ def error_handler(err: Exception):
 def error_handler(err: Exception):
     return jsonify({"error": str(err)}), 500
 
-
-
+@api.route("/bims/<version>/health")
+def health_check(version):
+    print(f"Checking {version} health")   
+    response = {"healthy": True}
+    return jsonify(response)
