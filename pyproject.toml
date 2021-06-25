@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "blaise-instrument-metadata-service"
+version = "0.1.0"
+description = ""
+authors = ["Nik Webb <nik.webb@ons.gov.uk>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+black = "^21.6b0"
+
+[tool.poetry.dev-dependencies]
+behave = "^1.2.6"
+pytest = "^6.2.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

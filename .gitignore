@@ -1,0 +1,9 @@
+/requirements.txt
+/venv/
+/app.yaml
+.pytest_cache
+/.idea/
+/.coverage
+.env
+__pycache__
+.vscode
