@@ -9,3 +9,15 @@ Behave <br>
 
 Pytest <br>
 `poetry run python -m pytest`
+
+API Help
+
+`livedate/<questionnaire>/create`
+Requires json body of
+`{"livedate": "25/06/2021"}`
+
+`livedate/<questionnaire>`
+Gets a live date for a questionnaire
+
+`livedate/<questionnaire>/delete`
+deletes a live date for a questionnaire

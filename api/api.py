@@ -1,15 +1,21 @@
 from flask import Flask, jsonify, request, current_app
+from google.cloud.datastore import Client
 
 from api import livedate
 from data_sources.datastore import DataStore
-
 
 api = Flask(__name__)
 api.register_blueprint(livedate)
 
 
-def init_datastore(app: Flask, datastore: DataStore):
-    app.datastore = datastore
+def init_datastore(app: Flask, datastore_client: Client, project_id: int):
+    app.datastore = DataStore(datastore_client, project_id)
+
+
+@api.route("/<questionnaire>")
+def get_live_date_for_questionnaire(questionnaire: str):
+    livedate = current_app.datastore.get_livedate(questionnaire)
+    return jsonify(livedate), 200
 
 
 @api.errorhandler(400)
