@@ -26,6 +26,15 @@ def step_impl(context, path):
     context.response_status_code = response.status_code
 
 
+@when(u'I POST "{path}" without a json payload')
+def step_impl(context, path):
+    response = context.client.post(
+        path, data=context.text
+    )
+    context.response = response.get_json()
+    context.response_status_code = response.status_code
+
+
 @when(u'I Delete "{path}":')
 def step_impl(context, path):
     response = context.client.delete(path, content_type="application/json")

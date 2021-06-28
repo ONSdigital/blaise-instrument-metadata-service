@@ -1,5 +1,8 @@
+from urllib import request
+
 from flask import Flask, jsonify
 from google.cloud.datastore import Client
+
 from app import livedate
 from data_sources.datastore import DataStore
 
