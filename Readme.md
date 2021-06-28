@@ -39,7 +39,7 @@
 
 #### Request ####
 
-`POST` `livedate/<questionnaire>/create` 
+`GET` `livedate/<questionnaire>` 
 
 #### Response ####
 
