@@ -55,7 +55,7 @@ Status code: 200
 
 #### Request ####
 
-`POST` `livedate/<questionnaire>/create`
+`POST` `livedate/<questionnaire>`
 
 _Requires json body of
 `{"livedate": "yyyy-mm-dd"}`_
@@ -73,7 +73,7 @@ Status code: 201
 
 #### Request ####
 
-`PATCH` `livedate/<questionnaire>/create`
+`PATCH` `livedate/<questionnaire>`
 
 _Requires json body of
 `{"livedate": "yyyy-mm-dd"}`_
@@ -91,7 +91,7 @@ Status code: 200
 
 #### Request ####
 
-`DELETE` `livedate/<questionnaire>/delete`
+`DELETE` `livedate/<questionnaire>`
 
 #### Response ####
 
