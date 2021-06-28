@@ -29,6 +29,8 @@ class DataStore:
         questionnaire = questionnaire.upper()
         # Retrieves the key by the name/id of the kind
         result = self.client.get(Key(LIVE_DATE_KIND, questionnaire, project=self.project_id))
+        if result is None:
+            return None
         print(f"result = {result}")
         return {"livedate": result["livedate"].isoformat()}
 

@@ -33,6 +33,15 @@ def step_impl(context, path):
     context.response_status_code = response.status_code
 
 
+@when(u'I PATCH "{path}" with the payload')
+def step_impl(context, path):
+    response = context.client.patch(
+        path, data=context.text, content_type="application/json"
+    )
+    context.response = response.get_json()
+    context.response_status_code = response.status_code
+
+
 @then(u'datastore should contain')
 def step_impl(context):
     context.datastore.store
