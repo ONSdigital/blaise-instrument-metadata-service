@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from flask import Blueprint, request, current_app, jsonify, abort
-from poetry.core.utils._compat import urlparse
 
 from app.util import get_current_url
 
@@ -25,7 +24,7 @@ def create_live_date_for_a_questionnaire(questionnaire: str):
         abort(409, description=f"{questionnaire} already has a live date {livedate}. Please use the Patch end point "
                                f"to update the livedate")
 
-    result = current_app.datastore.add_livedate(questionnaire, formatted_date)
+    current_app.datastore.add_livedate(questionnaire, formatted_date)
     current_url = get_current_url(request)
     return jsonify({"location": f"{current_url}/livedate/{questionnaire}"}), 201
 
