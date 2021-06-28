@@ -4,7 +4,7 @@ Feature: Live Date
     When I POST "livedate/test123/create" with the payload:
       """
       {
-        "livedate": "23/06/2021"
+        "livedate": "2021-06-23"
       }
       """
     Then datastore should contain:
@@ -29,7 +29,7 @@ Feature: Live Date
     And the response should be:
       """
       {
-        "Bad Request": "livedate is required, in format dd/mm/yyyy"
+        "Bad Request": "livedate is required, in format yyyy-mm-dd"
       }
       """
 
@@ -44,7 +44,7 @@ Feature: Live Date
     And the response should be:
       """
       {
-        "Bad Request": "Date is not in the required format dd/mm/yyyy"
+        "Bad Request": "Date is not in the required format yyyy-mm-dd"
       }
       """
 
@@ -67,7 +67,7 @@ Feature: Live Date
     When I POST "livedate/test123/create" with the payload:
       """
       {
-        "livedate": "24/06/2021"
+        "livedate": "2021-06-25"
       }
       """
     Then the response code should be "409"
@@ -134,7 +134,7 @@ Feature: Live Date
     When I PATCH "livedate/test123/update" with the payload:
       """
       {
-        "livedate": "25/06/2021"
+        "livedate": "2021-06-25"
       }
       """
     Then datastore should contain:
@@ -154,7 +154,7 @@ Feature: Live Date
     When I PATCH "livedate/test123/update" with the payload:
       """
       {
-        "livedate": "25/06/2021"
+        "livedate": "2021-06-25"
       }
       """
     Then the response code should be "400"
@@ -172,14 +172,14 @@ Feature: Live Date
     When I PATCH "livedate/test123/update" with the payload:
       """
       {
-        "blah": "23/06/2021"
+        "blah": "2021-06-25"
       }
       """
     Then the response code should be "400"
     And the response should be:
       """
       {
-        "Bad Request": "livedate is required, in format dd/mm/yyyy"
+        "Bad Request": "livedate is required, in format yyyy-mm-dd"
       }
       """
 
@@ -197,7 +197,7 @@ Feature: Live Date
     And the response should be:
       """
       {
-        "Bad Request": "Date is not in the required format dd/mm/yyyy"
+        "Bad Request": "Date is not in the required format yyyy-mm-dd"
       }
       """
 

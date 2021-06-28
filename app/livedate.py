@@ -21,13 +21,13 @@ def create_live_date_for_a_questionnaire(questionnaire: str):
         abort(400, description="Requires JSON format")
 
     if "livedate" not in request_data:
-        abort(400, description="livedate is required, in format dd/mm/yyyy")
+        abort(400, description="livedate is required, in format yyyy-mm-dd")
     live_date = request_data["livedate"]
 
     try:
-        formatted_date = datetime.strptime(live_date, "%d/%m/%Y")
+        formatted_date = datetime.strptime(live_date, "%Y-%m-%d")
     except ValueError:
-        abort(400, description="Date is not in the required format dd/mm/yyyy")
+        abort(400, description="Date is not in the required format yyyy-mm-dd")
 
     livedate = current_app.datastore.get_livedate(questionnaire)
     if livedate is not None:
@@ -46,13 +46,13 @@ def update_live_date_for_a_questionnaire(questionnaire: str):
         abort(400, description="Requires JSON format")
 
     if "livedate" not in request_data:
-        abort(400, description="livedate is required, in format dd/mm/yyyy")
+        abort(400, description="livedate is required, in format yyyy-mm-dd")
     live_date = request_data["livedate"]
 
     try:
-        formatted_date = datetime.strptime(live_date, "%d/%m/%Y")
+        formatted_date = datetime.strptime(live_date, "%Y-%m-%d")
     except ValueError:
-        abort(400, description="Date is not in the required format dd/mm/yyyy")
+        abort(400, description="Date is not in the required format yyyy-mm-dd")
 
     livedate = current_app.datastore.get_livedate(questionnaire)
     if livedate is None:

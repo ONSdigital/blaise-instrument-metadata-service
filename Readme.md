@@ -58,7 +58,7 @@ Status code: 200
 `POST` `livedate/<questionnaire>/create`
 
 _Requires json body of
-`{"livedate": "25/06/2021"}`_
+`{"livedate": "yyyy-mm-dd"}`_
 
 #### Response ####
 
@@ -76,7 +76,7 @@ Status code: 201
 `PATCH` `livedate/<questionnaire>/create`
 
 _Requires json body of
-`{"livedate": "26/06/2021"}`_
+`{"livedate": "yyyy-mm-dd"}`_
 
 #### Response ####
 
