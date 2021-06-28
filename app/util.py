@@ -1,4 +1,4 @@
-from poetry.core.utils._compat import urlparse
+import urllib.parse as urlparse
 
 
 def get_current_url(request):
