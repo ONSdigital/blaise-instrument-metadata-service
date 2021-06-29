@@ -13,3 +13,7 @@ def live_date():
 @pytest.fixture
 def mock_datastore():
     return mock.MagicMock()
+
+@pytest.fixture
+def current_url():
+    return "http://localhost"
