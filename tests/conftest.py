@@ -7,7 +7,7 @@ def questionnaire():
     return "foobar"
 
 @pytest.fixture
-def live_date():
+def to_start_date():
     return datetime.date(2021, 1, 1)
 
 @pytest.fixture

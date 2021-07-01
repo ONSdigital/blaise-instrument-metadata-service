@@ -3,7 +3,7 @@ from datetime import datetime
 from google.cloud import datastore
 from google.cloud.datastore import Key
 
-LIVE_DATE_KIND = "LiveDate"
+TO_START_DATE_KIND = "ToStartDate"
 
 
 class DataStore:
@@ -11,32 +11,32 @@ class DataStore:
         self.client = client
         self.project_id = project_id
 
-    def add_livedate(self, questionnaire: str, livedate: datetime):
+    def add_to_start_date(self, questionnaire: str, to_start_date: datetime):
         questionnaire = questionnaire.upper()
         # The Cloud Datastore key for the new entity
-        task_key = self.client.key(LIVE_DATE_KIND, questionnaire)
+        task_key = self.client.key(TO_START_DATE_KIND, questionnaire)
 
         # Prepares the new entity
         task = datastore.Entity(key=task_key)
         task["questionnaire"] = questionnaire
-        task["livedate"] = livedate
+        task["tostartdate"] = to_start_date
 
         # Saves the entity
         self.client.put(task)
-        return {questionnaire: task['livedate'].isoformat()}
+        return {questionnaire: task['tostartdate'].isoformat()}
 
-    def get_livedate(self, questionnaire: str):
+    def get_to_start_date(self, questionnaire: str):
         questionnaire = questionnaire.upper()
         # Retrieves the key by the name/id of the kind
-        result = self.client.get(Key(LIVE_DATE_KIND, questionnaire, project=self.project_id))
+        result = self.client.get(Key(TO_START_DATE_KIND, questionnaire, project=self.project_id))
         if result is None:
             return None
         print(f"result = {result}")
-        return {"livedate": result["livedate"].isoformat()}
+        return {"tostartdate": result["tostartdate"].isoformat()}
 
-    def delete_livedate(self, questionnaire: str):
+    def delete_to_start_date(self, questionnaire: str):
         questionnaire = questionnaire.upper()
-        result = self.client.get(Key(LIVE_DATE_KIND, questionnaire, project=self.project_id))
+        result = self.client.get(Key(TO_START_DATE_KIND, questionnaire, project=self.project_id))
         self.client.delete(result)
 
         print(f"Deleted {result}")
