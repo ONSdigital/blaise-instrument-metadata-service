@@ -14,9 +14,11 @@ def init_datastore(app: Flask, datastore_client: Client, project_id: str):
     app.datastore = DataStore(datastore_client, project_id)
 
 
-@app.route("/")
-def welcome():
-    return jsonify({"Message": "hello"}), 200
+@app.route("/bims/<version>/health")
+def health_check(version):
+    print(f"Checking {version} health")
+    response = {"healthy": True}
+    return jsonify(response)
 
 
 @app.errorhandler(400)
