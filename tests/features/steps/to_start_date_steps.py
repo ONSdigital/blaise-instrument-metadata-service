@@ -7,7 +7,7 @@ from datetime import datetime
 @given(u'datastore contains')
 def step_impl(context):
     for row in context.table:
-        context.datastore.add_livedate(row["questionnaire"], datetime.strptime(row["livedate"], "%d-%m-%Y"))
+        context.datastore.add_to_start_date(row["questionnaire"], datetime.strptime(row["tostartdate"], "%d-%m-%Y"))
 
 
 @when(u'I Get "{path}":')
@@ -58,7 +58,7 @@ def step_impl(context):
         key = row["key"]
         if key not in context.datastore.store:
             raise Exception(f"Expected key '{key}' not found in datastore")
-        assert datetime.strptime(row["livedate"], "%d-%m-%Y") == context.datastore.store[key]["livedate"]
+        assert datetime.strptime(row["tostartdate"], "%d-%m-%Y") == context.datastore.store[key]["tostartdate"]
         assert row["questionnaire"] == context.datastore.store[key]["questionnaire"]
 
 

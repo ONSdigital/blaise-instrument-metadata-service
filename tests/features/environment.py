@@ -7,16 +7,16 @@ class MockDataStore():
     def __init__(self):
         self.store = {}
 
-    def add_livedate(self, questionnaire: str, livedate: datetime) -> Dict[str, str]:
-        self.store[questionnaire] = {"questionnaire": questionnaire, "livedate": livedate}
-        return {questionnaire: livedate.isoformat()}
+    def add_to_start_date(self, questionnaire: str, to_start_date: datetime) -> Dict[str, str]:
+        self.store[questionnaire] = {"questionnaire": questionnaire, "tostartdate": to_start_date}
+        return {questionnaire: to_start_date.isoformat()}
 
-    def get_livedate(self, questionnaire: str):
+    def get_to_start_date(self, questionnaire: str):
         if questionnaire not in self.store:
             return None
-        return {"livedate": self.store[questionnaire]["livedate"].isoformat()}
+        return {"tostartdate": self.store[questionnaire]["tostartdate"].isoformat()}
 
-    def delete_livedate(self, questionnaire: str):
+    def delete_to_start_date(self, questionnaire: str):
         if questionnaire in self.store:
             self.store.pop(questionnaire)
         return {"deleted": f"{questionnaire}"}
