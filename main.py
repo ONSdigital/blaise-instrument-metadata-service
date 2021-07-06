@@ -3,7 +3,7 @@ from google.cloud import datastore
 
 from app import init_datastore, app
 
-project_id = os.getenv("PROJECT_ID", "ons-blaise-v2-dev-ali-9")
+project_id = os.getenv("PROJECT_ID")
 
 datastore_client = datastore.Client()
 
