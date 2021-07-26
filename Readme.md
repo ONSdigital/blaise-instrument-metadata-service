@@ -11,7 +11,7 @@
 `gcloud auth application-default login`
 
 #### Start the Flask app ####
-`poetry run pythin main.py`
+`poetry run python main.py`
 
 ## Install dependencies ####
 
@@ -35,11 +35,11 @@
 
 ## Rest API ##
 
-### Get a Live date ###
+### Get a TO Start Date ###
 
 #### Request ####
 
-`GET` `livedate/<questionnaire>` 
+`GET` `tostartdate/<questionnaire>` 
 
 #### Response ####
 
@@ -47,18 +47,18 @@
 ````
 Status code: 200
 {
-    "livedate": "2021-06-27T16:29:00+00:00"
+    "tostartdate": "2021-06-27T16:29:00+00:00"
 }
 ````
 
-### Create a livedate ###
+### Create a TO start date ###
 
 #### Request ####
 
-`POST` `livedate/<questionnaire>`
+`POST` `tostartdate/<questionnaire>`
 
 _Requires json body of
-`{"livedate": "yyyy-mm-dd"}`_
+`{"tostartdate": "yyyy-mm-dd"}`_
 
 #### Response ####
 
@@ -73,10 +73,10 @@ Status code: 201
 
 #### Request ####
 
-`PATCH` `livedate/<questionnaire>`
+`PATCH` `tostartdate/<questionnaire>`
 
 _Requires json body of
-`{"livedate": "yyyy-mm-dd"}`_
+`{"tostartdate": "yyyy-mm-dd"}`_
 
 #### Response ####
 
@@ -91,7 +91,7 @@ Status code: 200
 
 #### Request ####
 
-`DELETE` `livedate/<questionnaire>`
+`DELETE` `tostartdate/<questionnaire>`
 
 #### Response ####
 
