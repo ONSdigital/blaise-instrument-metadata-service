@@ -60,7 +60,7 @@ Feature: Live Date
       }
       """
 
-    Scenario: I receive a 400 error when posting without a valid payload
+  Scenario: I receive a 400 error when posting without a valid payload
     When I POST "tostartdate/test123" without a json payload:
       """
         undefined
@@ -126,7 +126,6 @@ Feature: Live Date
     And datastore should contain:
       | key | tostartdate | questionnaire |
 
-
   Scenario: I cannot delete a TO start date for an instrument that does not exist
     Given datastore contains:
       | key | tostartdate | questionnaire |
@@ -138,7 +137,6 @@ Feature: Live Date
         "Not Found": "No data found for test123"
       }
       """
-
 
   Scenario: I can Update a TO start date for an instrument
     Given datastore contains:

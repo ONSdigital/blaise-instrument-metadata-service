@@ -1,13 +1,12 @@
-from urllib import request
-
 from flask import Flask, jsonify
 from google.cloud.datastore import Client
 
-from app import tostartdate
+from app import tostartdate, tmreleasedate
 from data_sources.datastore import DataStore
 
 app = Flask(__name__)
 app.register_blueprint(tostartdate)
+app.register_blueprint(tmreleasedate)
 
 
 def init_datastore(app: Flask, datastore_client: Client, project_id: str):
