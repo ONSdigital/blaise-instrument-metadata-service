@@ -4,7 +4,9 @@
 
 #### Environment variables ####
 
-* PROJECT_ID
+Export the PROJECT_ID variable.  For Mac users execute the following, where <sandbox> is your sandbox name:
+
+`export PROJECT_ID=ons-blaise-v2-dev-<sandbox>`
 
 #### Authenticate ####
 
@@ -92,6 +94,70 @@ Status code: 200
 #### Request ####
 
 `DELETE` `tostartdate/<questionnaire>`
+
+#### Response ####
+
+````
+Status code: 204
+````
+
+### Get a TM Release Date ###
+
+#### Request ####
+
+`GET` `tmreleasedate/<questionnaire>`
+
+#### Response ####
+
+
+````
+Status code: 200
+{
+    "tmreleasedate": "2021-06-27T16:29:00+00:00"
+}
+````
+
+### Create a TM Release date ###
+
+#### Request ####
+
+`POST` `tmreleasedate/<questionnaire>`
+
+_Requires json body of
+`{"tmreleasedate": "yyyy-mm-dd"}`_
+
+#### Response ####
+
+````
+Status code: 201
+{
+    "DST2106A": "2021-08-26T00:00:00"
+}
+````
+
+### Update a release date ###
+
+#### Request ####
+
+`PATCH` `tostartdate/<questionnaire>`
+
+_Requires json body of
+`{"tmreleasedate": "yyyy-mm-dd"}`_
+
+#### Response ####
+
+````
+Status code: 200
+{
+    "DST2106A": "2021-08-26T00:00:00"
+}
+````
+
+### Delete a release date ###
+
+#### Request ####
+
+`DELETE` `tmreleasedate/<questionnaire>`
 
 #### Response ####
 

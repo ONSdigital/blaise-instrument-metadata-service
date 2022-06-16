@@ -73,3 +73,21 @@ def step_impl(context, status_code):
 @then(u'the response should be')
 def step_impl(context):
     assert context.response == json.loads(context.text), f"Response {context.response} does not match {context.text}"
+
+
+@given(u'datastore contains Totalmobile information')
+def step_impl(context):
+    for row in context.table:
+        context.datastore.add_tm_release_date(row["questionnaire"], datetime.strptime(row["tmreleasedate"], "%d-%m-%Y"))
+
+
+@then(u'datastore records for Totalmobile should contain')
+def step_impl(context):
+    context.datastore.store
+    for row in context.table:
+        key = row["key"]
+        if key not in context.datastore.store:
+            raise Exception(f"Expected key '{key}' not found in datastore")
+        assert datetime.strptime(row["tmreleasedate"], "%d-%m-%Y") == context.datastore.store[key]["tmreleasedate"]
+        assert row["questionnaire"] == context.datastore.store[key]["questionnaire"]
+
