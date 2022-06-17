@@ -21,6 +21,20 @@ class MockDataStore():
             self.store.pop(questionnaire)
         return {"deleted": f"{questionnaire}"}
 
+    def add_tm_release_date(self, questionnaire: str, tm_release_date: datetime) -> Dict[str, str]:
+        self.store[questionnaire] = {"questionnaire": questionnaire, "tmreleasedate": tm_release_date}
+        return {questionnaire: tm_release_date.isoformat()}
+
+    def get_tm_release_date(self, questionnaire: str):
+        if questionnaire not in self.store:
+            return None
+        return {"tmreleasedate": self.store[questionnaire]["tmreleasedate"].isoformat()}
+
+    def delete_tm_release_date(self, questionnaire: str):
+        if questionnaire in self.store:
+            self.store.pop(questionnaire)
+        return {"deleted": f"{questionnaire}"}
+
 
 def before_scenario(context, _scenario):
     mock_datastore = MockDataStore()
