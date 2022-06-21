@@ -1,4 +1,4 @@
-# Blaise Instrument Metadata Service
+git purge # Blaise Instrument Metadata Service
 
 ## Setup ##
 
@@ -50,6 +50,13 @@ Export the PROJECT_ID variable.  For Mac users execute the following, where <san
 Status code: 200
 {
     "tostartdate": "2021-06-27T16:29:00+00:00"
+}
+````
+
+````
+Status code: 404
+{
+    "tostartdate": ""
 }
 ````
 
@@ -114,6 +121,13 @@ Status code: 204
 Status code: 200
 {
     "tmreleasedate": "2021-06-27T16:29:00+00:00"
+}
+````
+
+````
+Status code: 404
+{
+    "tmreleasedate": ""
 }
 ````
 
