@@ -86,7 +86,7 @@ python-versions = "~=3.7"
 
 [[package]]
 name = "certifi"
-version = "2022.5.18.1"
+version = "2022.6.15"
 description = "Python package for providing Mozilla's CA Bundle."
 category = "main"
 optional = false
@@ -144,7 +144,7 @@ dotenv = ["python-dotenv"]
 
 [[package]]
 name = "google-api-core"
-version = "2.8.1"
+version = "2.8.2"
 description = "Google API client core library"
 category = "main"
 optional = false
@@ -155,13 +155,11 @@ google-auth = ">=1.25.0,<3.0dev"
 googleapis-common-protos = ">=1.56.2,<2.0dev"
 grpcio = {version = ">=1.33.2,<2.0dev", optional = true, markers = "extra == \"grpc\""}
 grpcio-status = {version = ">=1.33.2,<2.0dev", optional = true, markers = "extra == \"grpc\""}
-protobuf = ">=3.15.0,<4.0.0dev"
+protobuf = ">=3.15.0,<5.0.0dev"
 requests = ">=2.18.0,<3.0.0dev"
 
 [package.extras]
 grpc = ["grpcio (>=1.33.2,<2.0dev)", "grpcio-status (>=1.33.2,<2.0dev)"]
-grpcgcp = ["grpcio-gcp (>=0.2.2,<1.0dev)"]
-grpcio-gcp = ["grpcio-gcp (>=0.2.2,<1.0dev)"]
 
 [[package]]
 name = "google-auth"
@@ -650,8 +648,8 @@ cachetools = [
     {file = "cachetools-5.2.0.tar.gz", hash = "sha256:6a94c6402995a99c3970cc7e4884bb60b4a8639938157eeed436098bf9831757"},
 ]
 certifi = [
-    {file = "certifi-2022.5.18.1-py3-none-any.whl", hash = "sha256:f1d53542ee8cbedbe2118b5686372fb33c297fcd6379b050cca0ef13a597382a"},
-    {file = "certifi-2022.5.18.1.tar.gz", hash = "sha256:9c5705e395cd70084351dd8ad5c41e65655e08ce46f2ec9cf6c2c08390f71eb7"},
+    {file = "certifi-2022.6.15-py3-none-any.whl", hash = "sha256:fe86415d55e84719d75f8b69414f6438ac3547d2078ab91b67e779ef69378412"},
+    {file = "certifi-2022.6.15.tar.gz", hash = "sha256:84c85a9078b11105f04f3036a9482ae10e4621616db313fe045dd24743a0820d"},
 ]
 charset-normalizer = [
     {file = "charset-normalizer-2.0.12.tar.gz", hash = "sha256:2857e29ff0d34db842cd7ca3230549d1a697f96ee6d3fb071cfa6c7393832597"},
@@ -670,8 +668,8 @@ flask = [
     {file = "Flask-2.1.2.tar.gz", hash = "sha256:315ded2ddf8a6281567edb27393010fe3406188bafbfe65a3339d5787d89e477"},
 ]
 google-api-core = [
-    {file = "google-api-core-2.8.1.tar.gz", hash = "sha256:958024c6aa3460b08f35741231076a4dd9a4c819a6a39d44da9627febe8b28f0"},
-    {file = "google_api_core-2.8.1-py3-none-any.whl", hash = "sha256:ce1daa49644b50398093d2a9ad886501aa845e2602af70c3001b9f402a9d7359"},
+    {file = "google-api-core-2.8.2.tar.gz", hash = "sha256:06f7244c640322b508b125903bb5701bebabce8832f85aba9335ec00b3d02edc"},
+    {file = "google_api_core-2.8.2-py3-none-any.whl", hash = "sha256:93c6a91ccac79079ac6bbf8b74ee75db970cc899278b97d53bc012f35908cf50"},
 ]
 google-auth = [
     {file = "google-auth-2.8.0.tar.gz", hash = "sha256:819b70140d05501739e1387291d39f0de3b4dff3b00ae4aff8e7a05369957f89"},
