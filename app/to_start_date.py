@@ -13,7 +13,9 @@ def get_to_start_date_for_questionnaire(questionnaire: str):
     if to_start_date is None:
         current_app.logger.error(f"No TO Start date found for {questionnaire}")
         abort(404, description=f"No data found for {questionnaire}")
-    current_app.logger.info(f"Date returned {jsonify(to_start_date)} for {questionnaire}")
+    current_app.logger.info(
+        f"Date returned {jsonify(to_start_date)} for {questionnaire}"
+    )
     return jsonify(to_start_date), 200
 
 
@@ -23,13 +25,20 @@ def create_to_start_date_for_a_questionnaire(questionnaire: str):
 
     to_start_date = current_app.datastore.get_to_start_date(questionnaire)
     if to_start_date is not None:
-        current_app.logger.error(f"{questionnaire} already has a start date {to_start_date}. Path end point required")
-        abort(409, description=f"{questionnaire} already has a TO start date {to_start_date}. Please use the Patch end point "
-                               f"to update the TO start date")
+        current_app.logger.error(
+            f"{questionnaire} already has a start date {to_start_date}. Path end point required"
+        )
+        abort(
+            409,
+            description=f"{questionnaire} already has a TO start date {to_start_date}. Please use the Patch end point "
+            f"to update the TO start date",
+        )
 
     current_app.datastore.add_to_start_date(questionnaire, formatted_date)
     current_url = get_current_url(request)
-    current_app.logger.info(f"Created start date for {questionnaire} : {formatted_date}")
+    current_app.logger.info(
+        f"Created start date for {questionnaire} : {formatted_date}"
+    )
     return jsonify({"location": f"{current_url}/tostartdate/{questionnaire}"}), 201
 
 
@@ -40,7 +49,10 @@ def update_to_start_date_for_a_questionnaire(questionnaire: str):
     to_start_date = current_app.datastore.get_to_start_date(questionnaire)
     if to_start_date is None:
         current_app.logger.error(f"No data found for {questionnaire} unable to update")
-        abort(400, description=f"No data found for {questionnaire}, please use the create end point")
+        abort(
+            400,
+            description=f"No data found for {questionnaire}, please use the create end point",
+        )
 
     current_app.datastore.add_to_start_date(questionnaire, formatted_date)
     current_url = get_current_url(request)

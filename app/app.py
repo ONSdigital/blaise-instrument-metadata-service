@@ -42,6 +42,3 @@ def error_handler(err: Exception):
 def error_handler(err: Exception):
     print(f"I have an error {err}")
     return jsonify({"error": str(err)}), 500
-
-
-
