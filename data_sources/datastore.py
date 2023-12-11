@@ -24,12 +24,14 @@ class DataStore:
 
         # Saves the entity
         self.client.put(task)
-        return {questionnaire: task['tostartdate'].isoformat()}
+        return {questionnaire: task["tostartdate"].isoformat()}
 
     def get_to_start_date(self, questionnaire: str):
         questionnaire = questionnaire.upper()
         # Retrieves the key by the name/id of the kind
-        result = self.client.get(Key(TO_START_DATE_KIND, questionnaire, project=self.project_id))
+        result = self.client.get(
+            Key(TO_START_DATE_KIND, questionnaire, project=self.project_id)
+        )
         if result is None:
             return None
         print(f"result = {result}")
@@ -37,7 +39,9 @@ class DataStore:
 
     def delete_to_start_date(self, questionnaire: str):
         questionnaire = questionnaire.upper()
-        result = self.client.get(Key(TO_START_DATE_KIND, questionnaire, project=self.project_id))
+        result = self.client.get(
+            Key(TO_START_DATE_KIND, questionnaire, project=self.project_id)
+        )
         self.client.delete(result)
 
         print(f"Deleted {result}")
@@ -54,12 +58,14 @@ class DataStore:
 
         # Saves the entity
         self.client.put(task)
-        return {questionnaire: task['tmreleasedate'].isoformat()}
+        return {questionnaire: task["tmreleasedate"].isoformat()}
 
     def get_tm_release_date(self, questionnaire: str):
         questionnaire = questionnaire.upper()
         # Retrieves the key by the name/id of the kind
-        result = self.client.get(Key(TM_RELEASE_DATE_KIND, questionnaire, project=self.project_id))
+        result = self.client.get(
+            Key(TM_RELEASE_DATE_KIND, questionnaire, project=self.project_id)
+        )
         if result is None:
             return None
         print(f"result = {result}")
@@ -67,7 +73,9 @@ class DataStore:
 
     def delete_tm_release_date(self, questionnaire: str):
         questionnaire = questionnaire.upper()
-        result = self.client.get(Key(TM_RELEASE_DATE_KIND, questionnaire, project=self.project_id))
+        result = self.client.get(
+            Key(TM_RELEASE_DATE_KIND, questionnaire, project=self.project_id)
+        )
         self.client.delete(result)
 
         print(f"Deleted {result}")

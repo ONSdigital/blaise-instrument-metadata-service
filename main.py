@@ -1,7 +1,8 @@
 import os
+
 from google.cloud import datastore
 
-from app import init_datastore, app
+from app import app, init_datastore
 
 project_id = os.getenv("PROJECT_ID")
 

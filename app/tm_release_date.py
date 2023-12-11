@@ -1,5 +1,7 @@
 from datetime import datetime
-from flask import Blueprint, request, current_app, jsonify, abort
+
+from flask import Blueprint, abort, current_app, jsonify, request
+
 from app.util import get_current_url
 
 tmreleasedate = Blueprint("tmreleasedate", __name__, url_prefix="/tmreleasedate")
@@ -11,7 +13,9 @@ def get_tm_release_date_for_questionnaire(questionnaire: str):
     if tm_release_date is None:
         current_app.logger.error(f"No TM Release date found for {questionnaire}")
         abort(404, description=f"No data found for {questionnaire}")
-    current_app.logger.info(f"Date returned {jsonify(tm_release_date)} for {questionnaire}")
+    current_app.logger.info(
+        f"Date returned {jsonify(tm_release_date)} for {questionnaire}"
+    )
     return jsonify(tm_release_date), 200
 
 
@@ -21,13 +25,20 @@ def create_tm_release_date_for_a_questionnaire(questionnaire: str):
 
     tm_release_date = current_app.datastore.get_tm_release_date(questionnaire)
     if tm_release_date is not None:
-        current_app.logger.error(f"{questionnaire} already has a Release date {tm_release_date}. Patch end point required")
-        abort(409, description=f"{questionnaire} already has a TM Release date {tm_release_date}. Please use the Patch end point "
-                               f"to update the TM Release date")
+        current_app.logger.error(
+            f"{questionnaire} already has a Release date {tm_release_date}. Patch end point required"
+        )
+        abort(
+            409,
+            description=f"{questionnaire} already has a TM Release date {tm_release_date}. Please use the Patch end point "
+            f"to update the TM Release date",
+        )
 
     current_app.datastore.add_tm_release_date(questionnaire, formatted_date)
     current_url = get_current_url(request)
-    current_app.logger.info(f"Created Release date for {questionnaire} : {formatted_date}")
+    current_app.logger.info(
+        f"Created Release date for {questionnaire} : {formatted_date}"
+    )
     return jsonify({"location": f"{current_url}/tmreleasedate/{questionnaire}"}), 201
 
 
@@ -38,7 +49,10 @@ def update_tm_release_date_for_a_questionnaire(questionnaire: str):
     tm_release_date = current_app.datastore.get_tm_release_date(questionnaire)
     if tm_release_date is None:
         current_app.logger.error(f"No data found for {questionnaire} unable to update")
-        abort(400, description=f"No data found for {questionnaire}, please use the create end point")
+        abort(
+            400,
+            description=f"No data found for {questionnaire}, please use the create end point",
+        )
 
     current_app.datastore.add_tm_release_date(questionnaire, formatted_date)
     current_url = get_current_url(request)
