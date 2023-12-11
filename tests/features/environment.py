@@ -1,6 +1,7 @@
-from app.app import app
 from datetime import datetime
 from typing import Dict
+
+from app.app import app
 
 
 class MockDataStore:

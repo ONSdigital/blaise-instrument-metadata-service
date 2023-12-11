@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Blueprint, request, current_app, jsonify, abort
+from flask import Blueprint, abort, current_app, jsonify, request
 
 from app.util import get_current_url
 

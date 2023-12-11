@@ -1,7 +1,7 @@
 import json
+from datetime import datetime
 
 from behave import given, then, when
-from datetime import datetime
 
 
 @given("datastore contains")

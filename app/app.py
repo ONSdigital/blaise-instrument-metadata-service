@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from google.cloud.datastore import Client
 
-from app import tostartdate, tmreleasedate
+from app import tmreleasedate, tostartdate
 from data_sources.datastore import DataStore
 
 app = Flask(__name__)
