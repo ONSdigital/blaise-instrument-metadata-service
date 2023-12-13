@@ -25,20 +25,23 @@ def create_tm_release_date_for_a_questionnaire(questionnaire: str):
 
     tm_release_date = current_app.datastore.get_tm_release_date(questionnaire)
     if tm_release_date is not None:
-        current_app.logger.error(
-            f"{questionnaire} already has a Release date {tm_release_date}. Patch end point required"
+        error_msg = (
+            f"{questionnaire} already has a Release date {tm_release_date}. "
+            "Patch end point required"
         )
         abort(
             409,
-            description=f"{questionnaire} already has a TM Release date {tm_release_date}. Please use the Patch end point "
-            f"to update the TM Release date",
+            description=(
+                f"{questionnaire} already has a TM Release date {tm_release_date}. "
+                f"Please use the Patch end point to update the TM Release date"
+            ),
         )
+        current_app.logger.error(error_msg)
 
     current_app.datastore.add_tm_release_date(questionnaire, formatted_date)
     current_url = get_current_url(request)
-    current_app.logger.info(
-        f"Created Release date for {questionnaire} : {formatted_date}"
-    )
+    success_msg = f"Created Release date for {questionnaire} : {formatted_date}"
+    current_app.logger.info(success_msg)
     return jsonify({"location": f"{current_url}/tmreleasedate/{questionnaire}"}), 201
 
 
@@ -51,7 +54,10 @@ def update_tm_release_date_for_a_questionnaire(questionnaire: str):
         current_app.logger.error(f"No data found for {questionnaire} unable to update")
         abort(
             400,
-            description=f"No data found for {questionnaire}, please use the create end point",
+            description=(
+                f"No data found for {questionnaire}, "
+                f"please use the create end point"
+            ),
         )
 
     current_app.datastore.add_tm_release_date(questionnaire, formatted_date)

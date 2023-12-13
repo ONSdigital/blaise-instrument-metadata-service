@@ -26,12 +26,18 @@ def create_to_start_date_for_a_questionnaire(questionnaire: str):
     to_start_date = current_app.datastore.get_to_start_date(questionnaire)
     if to_start_date is not None:
         current_app.logger.error(
-            f"{questionnaire} already has a start date {to_start_date}. Path end point required"
+            (
+                f"{questionnaire} already has a start date {to_start_date}. "
+                f"Path end point required"
+            )
         )
         abort(
             409,
-            description=f"{questionnaire} already has a TO start date {to_start_date}. Please use the Patch end point "
-            f"to update the TO start date",
+            description=(
+                f"{questionnaire} already has a TO start date {to_start_date}. "
+                f"Please use the Patch end point "
+                f"to update the TO start date"
+            ),
         )
 
     current_app.datastore.add_to_start_date(questionnaire, formatted_date)
@@ -51,7 +57,10 @@ def update_to_start_date_for_a_questionnaire(questionnaire: str):
         current_app.logger.error(f"No data found for {questionnaire} unable to update")
         abort(
             400,
-            description=f"No data found for {questionnaire}, please use the create end point",
+            description=(
+                f"No data found for {questionnaire}, "
+                f"please use the create end point"
+            ),
         )
 
     current_app.datastore.add_to_start_date(questionnaire, formatted_date)
