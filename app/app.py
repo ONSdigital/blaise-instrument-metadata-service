@@ -1,8 +1,8 @@
 from flask import Flask, jsonify
 from google.cloud.datastore import Client
 
-from app import tmreleasedate, tostartdate
-from data_sources.datastore import DataStore
+from app.tm_release_date import tmreleasedate
+from app.to_start_date import tostartdate
 
 app = Flask(__name__)
 app.register_blueprint(tostartdate)
