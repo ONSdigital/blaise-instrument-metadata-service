@@ -4,7 +4,7 @@ from google.cloud import datastore
 
 from app import app, init_datastore
 
-project_id = os.getenv("PROJECT_ID")
+project_id = os.getenv("PROJECT_ID", default="")
 
 datastore_client = datastore.Client()
 

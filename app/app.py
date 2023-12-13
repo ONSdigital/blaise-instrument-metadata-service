@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from google.cloud.datastore import Client
+from werkzeug.exceptions import BadRequest, Conflict, NotFound
 
 from app.tm_release_date import tmreleasedate
 from app.to_start_date import tostartdate
@@ -21,19 +22,19 @@ def health_check(version):
 
 
 @app.errorhandler(400)
-def handle_bad_request(err: Exception):
+def handle_bad_request(err: BadRequest):
     print(f"Bad Request {err.description}")
     return jsonify({"Bad Request": err.description}), 400
 
 
 @app.errorhandler(404)
-def handle_not_found(err: Exception):
+def handle_not_found(err: NotFound):
     print(f"Not found {err.description}")
     return jsonify({"Not Found": err.description}), 404
 
 
 @app.errorhandler(409)
-def handle_already_exists(err: Exception):
+def handle_already_exists(err: Conflict):
     print(f"Already exists {err.description}")
     return jsonify({"Already Exists": err.description}), 409
 
