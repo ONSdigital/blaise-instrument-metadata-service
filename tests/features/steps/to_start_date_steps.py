@@ -5,7 +5,7 @@ from behave import given, then, when
 
 
 @given("datastore contains")
-def step_impl(context):
+def datastore_contains(context):
     for row in context.table:
         context.datastore.add_to_start_date(
             row["questionnaire"], datetime.strptime(row["tostartdate"], "%d-%m-%Y")
@@ -13,14 +13,14 @@ def step_impl(context):
 
 
 @when('I Get "{path}":')
-def step_impl(context, path):
+def i_get(context, path):
     response = context.client.get(path, content_type="application/json")
     context.response = response.get_json()
     context.response_status_code = response.status_code
 
 
 @when('I POST "{path}" with the payload')
-def step_impl(context, path):
+def i_post_with_payload(context, path):
     response = context.client.post(
         path, data=context.text, content_type="application/json"
     )
@@ -29,21 +29,21 @@ def step_impl(context, path):
 
 
 @when('I POST "{path}" without a json payload')
-def step_impl(context, path):
+def i_post_without_payload(context, path):
     response = context.client.post(path, data=context.text)
     context.response = response.get_json()
     context.response_status_code = response.status_code
 
 
 @when('I Delete "{path}":')
-def step_impl(context, path):
+def i_delete(context, path):
     response = context.client.delete(path, content_type="application/json")
     context.response = response.get_json()
     context.response_status_code = response.status_code
 
 
 @when('I PATCH "{path}" with the payload')
-def step_impl(context, path):
+def I_patch(context, path):
     response = context.client.patch(
         path, data=context.text, content_type="application/json"
     )
@@ -52,7 +52,7 @@ def step_impl(context, path):
 
 
 @then("datastore should contain")
-def step_impl(context):
+def datastore_should_contain(context):
     context.datastore.store
     for row in context.table:
         key = row["key"]
@@ -66,7 +66,7 @@ def step_impl(context):
 
 
 @then('the response code should be "{status_code}"')
-def step_impl(context, status_code):
+def response_code_should_be_status_code(context, status_code):
     assert context.response_status_code == int(status_code), (
         f"Response code {context.response_status_code}"
         + " did not match expected value: {status_code}"
@@ -74,14 +74,14 @@ def step_impl(context, status_code):
 
 
 @then("the response should be")
-def step_impl(context):
+def the_response_should_be_string(context):
     assert context.response == json.loads(
         context.text
     ), f"Response {context.response} does not match {context.text}"
 
 
 @given("datastore contains Totalmobile information")
-def step_impl(context):
+def datastore_contains_totalmobile_information(context):
     for row in context.table:
         context.datastore.add_tm_release_date(
             row["questionnaire"], datetime.strptime(row["tmreleasedate"], "%d-%m-%Y")
@@ -89,7 +89,7 @@ def step_impl(context):
 
 
 @then("datastore records for Totalmobile should contain")
-def step_impl(context):
+def datastore_records_for_totalmobile_should_contain(context):
     context.datastore.store
     for row in context.table:
         key = row["key"]

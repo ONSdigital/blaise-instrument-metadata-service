@@ -1,4 +1,3 @@
-import datetime
 from unittest import mock
 
 from google.cloud import datastore
