@@ -34,7 +34,7 @@ def handle_not_found(err: NotFound):
 
 
 @app.errorhandler(409)
-def handle_already_exists(err: Conflict):
+def handle_conflict(err: Conflict):
     print(f"Already exists {err.description}")
     return jsonify({"Already Exists": err.description}), 409
 

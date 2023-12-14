@@ -3,7 +3,7 @@ from unittest import mock
 from google.cloud import datastore
 from google.cloud.datastore import Key
 
-from data_sources.datastore import DataStore
+from data_sources.datastore import DataStore  # type: ignore
 
 
 # Mock_datastore, questionnaire, live_date come from conftest.py
