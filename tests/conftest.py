@@ -1,6 +1,7 @@
-import pytest
 import datetime
 from unittest import mock
+
+import pytest
 
 
 @pytest.fixture
