@@ -1,5 +1,5 @@
 service: bims
-runtime: python37
+runtime: python39
 
 vpc_access_connector:
   name: projects/_PROJECT_ID/locations/europe-west2/connectors/vpcconnect
