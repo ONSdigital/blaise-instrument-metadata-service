@@ -1,14 +1,20 @@
-from app.app import app
 from datetime import datetime
 from typing import Dict
 
+from app.app import app
 
-class MockDataStore():
+
+class MockDataStore:
     def __init__(self):
         self.store = {}
 
-    def add_to_start_date(self, questionnaire: str, to_start_date: datetime) -> Dict[str, str]:
-        self.store[questionnaire] = {"questionnaire": questionnaire, "tostartdate": to_start_date}
+    def add_to_start_date(
+        self, questionnaire: str, to_start_date: datetime
+    ) -> Dict[str, str]:
+        self.store[questionnaire] = {
+            "questionnaire": questionnaire,
+            "tostartdate": to_start_date,
+        }
         return {questionnaire: to_start_date.isoformat()}
 
     def get_to_start_date(self, questionnaire: str):
@@ -21,8 +27,13 @@ class MockDataStore():
             self.store.pop(questionnaire)
         return {"deleted": f"{questionnaire}"}
 
-    def add_tm_release_date(self, questionnaire: str, tm_release_date: datetime) -> Dict[str, str]:
-        self.store[questionnaire] = {"questionnaire": questionnaire, "tmreleasedate": tm_release_date}
+    def add_tm_release_date(
+        self, questionnaire: str, tm_release_date: datetime
+    ) -> Dict[str, str]:
+        self.store[questionnaire] = {
+            "questionnaire": questionnaire,
+            "tmreleasedate": tm_release_date,
+        }
         return {questionnaire: tm_release_date.isoformat()}
 
     def get_tm_release_date(self, questionnaire: str):
