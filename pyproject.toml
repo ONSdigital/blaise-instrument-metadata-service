@@ -1,4 +1,5 @@
 [tool.poetry]
+package-mode = false
 name = "blaise-instrument-metadata-service"
 version = "0.1.0"
 description = ""
