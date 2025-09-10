@@ -15,7 +15,7 @@ format:
 ## Run styling checks for python
 lint:
 	@poetry run flake8 --max-line-length=88 --ignore=W503,E203 .
-	@poetry run mypy --config-file ${mkfile_dir}mypy.ini .
+	@poetry run mypy --config-file mypy.ini .
 
 .PHONY: test
 ## Run unit tests
