@@ -4,7 +4,7 @@ from datetime import datetime
 from behave import given, then, when  # type: ignore
 
 
-@given("datastore contains")
+@given("datastore contains:")
 def datastore_contains(context):
     for row in context.table:
         context.datastore.add_to_start_date(
@@ -19,7 +19,7 @@ def i_get(context, path):
     context.response_status_code = response.status_code
 
 
-@when('I POST "{path}" with the payload')
+@when('I POST "{path}" with the payload:')
 def i_post_with_payload(context, path):
     response = context.client.post(
         path, data=context.text, content_type="application/json"
@@ -28,8 +28,8 @@ def i_post_with_payload(context, path):
     context.response_status_code = response.status_code
 
 
-@when('I POST "{path}" without a json payload')
-def i_post_without_payload(context, path):
+@when('I POST "{path}" without a json payload:')
+def i_post_without_json_payload(context, path):
     response = context.client.post(path, data=context.text)
     context.response = response.get_json()
     context.response_status_code = response.status_code
@@ -42,7 +42,7 @@ def i_delete(context, path):
     context.response_status_code = response.status_code
 
 
-@when('I PATCH "{path}" with the payload')
+@when('I PATCH "{path}" with the payload:')
 def I_patch(context, path):
     response = context.client.patch(
         path, data=context.text, content_type="application/json"
@@ -51,7 +51,7 @@ def I_patch(context, path):
     context.response_status_code = response.status_code
 
 
-@then("datastore should contain")
+@then("datastore should contain:")
 def datastore_should_contain(context):
     context.datastore.store
     for row in context.table:
@@ -73,14 +73,14 @@ def response_code_should_be_status_code(context, status_code):
     )
 
 
-@then("the response should be")
+@then("the response should be:")
 def the_response_should_be_string(context):
     assert context.response == json.loads(
         context.text
     ), f"Response {context.response} does not match {context.text}"
 
 
-@given("datastore contains Totalmobile information")
+@given("datastore contains Totalmobile information:")
 def datastore_contains_totalmobile_information(context):
     for row in context.table:
         context.datastore.add_tm_release_date(
@@ -88,7 +88,7 @@ def datastore_contains_totalmobile_information(context):
         )
 
 
-@then("datastore records for Totalmobile should contain")
+@then("datastore records for Totalmobile should contain:")
 def datastore_records_for_totalmobile_should_contain(context):
     context.datastore.store
     for row in context.table:
