@@ -1,50 +1,50 @@
-git purge # Blaise Instrument Metadata Service
+# Blaise Instrument Metadata Service
 
-## Setup ##
+## Setup
 
-#### Environment variables ####
+#### Environment variables
 
 Export the PROJECT_ID variable.  For Mac users execute the following, where <sandbox> is your sandbox name:
 
 `export PROJECT_ID=ons-blaise-v2-dev-<sandbox>`
 
-#### Authenticate ####
+#### Authenticate
 
 `gcloud auth application-default login`
 
-#### Start the Flask app ####
+#### Start the Flask app
+
 `poetry run python main.py`
 
-## Install dependencies ####
+## Install dependencies
 
 `poetry install`
 
 `poetry update`
 
-## Run tests ##
+## Run tests
 
-#### Run All tests ####
+#### Run All tests
 
 `make test`
 
-#### Behave ####
+#### Behave
 
 `poetry run python -m behave tests/features`<br>
 
-#### Pytest ####
+#### Pytest
 
 `poetry run python -m pytest`
 
-## Rest API ##
+## Rest API
 
-### Get a TO Start Date ###
+### Get a TO Start Date
 
-#### Request ####
+#### Request
 
-`GET` `tostartdate/<questionnaire>` 
+`GET` `tostartdate/<questionnaire>`
 
-#### Response ####
-
+#### Response
 
 ````
 Status code: 200
@@ -60,16 +60,16 @@ Status code: 404
 }
 ````
 
-### Create a TO start date ###
+### Create a TO start date
 
-#### Request ####
+#### Request
 
 `POST` `tostartdate/<questionnaire>`
 
 _Requires json body of
 `{"tostartdate": "yyyy-mm-dd"}`_
 
-#### Response ####
+#### Response
 
 ````
 Status code: 201
@@ -78,16 +78,16 @@ Status code: 201
 }
 ````
 
-### Update a livedate ###
+### Update a livedate
 
-#### Request ####
+#### Request
 
 `PATCH` `tostartdate/<questionnaire>`
 
 _Requires json body of
 `{"tostartdate": "yyyy-mm-dd"}`_
 
-#### Response ####
+#### Response
 
 ````
 Status code: 200
@@ -96,26 +96,25 @@ Status code: 200
 }
 ````
 
-### Delete a livedate ###
+### Delete a livedate
 
-#### Request ####
+#### Request
 
 `DELETE` `tostartdate/<questionnaire>`
 
-#### Response ####
+#### Response
 
 ````
 Status code: 204
 ````
 
-### Get a TM Release Date ###
+### Get a TM Release Date
 
-#### Request ####
+#### Request
 
 `GET` `tmreleasedate/<questionnaire>`
 
-#### Response ####
-
+#### Response
 
 ````
 Status code: 200
@@ -131,16 +130,16 @@ Status code: 404
 }
 ````
 
-### Create a TM Release date ###
+### Create a TM Release date
 
-#### Request ####
+#### Request
 
 `POST` `tmreleasedate/<questionnaire>`
 
 _Requires json body of
 `{"tmreleasedate": "yyyy-mm-dd"}`_
 
-#### Response ####
+#### Response
 
 ````
 Status code: 201
@@ -149,16 +148,16 @@ Status code: 201
 }
 ````
 
-### Update a release date ###
+### Update a release date
 
-#### Request ####
+#### Request
 
 `PATCH` `tostartdate/<questionnaire>`
 
 _Requires json body of
 `{"tmreleasedate": "yyyy-mm-dd"}`_
 
-#### Response ####
+#### Response
 
 ````
 Status code: 200
@@ -167,13 +166,13 @@ Status code: 200
 }
 ````
 
-### Delete a release date ###
+### Delete a release date
 
-#### Request ####
+#### Request
 
 `DELETE` `tmreleasedate/<questionnaire>`
 
-#### Response ####
+#### Response
 
 ````
 Status code: 204

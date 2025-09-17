@@ -82,7 +82,7 @@ def get_formatted_date(request_body):
         request_data = request_body.get_json()
         if request_data is None:
             raise
-    except:
+    except Exception:
         current_app.logger.error("Request was not in JSON format")
         abort(400, description="Requires JSON format")
 

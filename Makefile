@@ -14,9 +14,8 @@ format:
 .PHONY: lint
 ## Run styling checks for python
 lint:
-	@poetry run black --check .
-	@poetry run isort --check .
-	@poetry run flake8 --max-line-length=88 .
+	@poetry run flake8 --max-line-length=88 --ignore=W503,E203 .
+	@poetry run mypy --config-file mypy.ini .
 
 .PHONY: test
 ## Run unit tests
